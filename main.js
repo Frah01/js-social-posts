@@ -63,18 +63,17 @@ posts.forEach((elem)=>{
     const date = elem.created;
     const [year, month, day] = date.split('-');
     const result = [month, day, year].join('/');
+    let iniziali = '';
+    let immagine = '';
     
     
     if(elem.author.image === null){
-        let text = elem.author.name;
-        const myArray = text.split(" ");
-        console.log(myArray)
-        let nome = myArray[0]
-        let cognome = myArray[1]
-        let primaletteranome = nome.charAt(0)
-        let primaletteracognome = cognome.charAt(0)
-        console.log(primaletteranome)
-        console.log(primaletteracognome)
+    iniziali = elem.author.name.split(" ").map((e)=>e[0]).join("");
+    immagine = iniziali
+    console.log(iniziali)
+    }
+    else {
+        immagine = `<img class="profile-pic" src="${elem.author.image}" alt="Phil Mangione"></img>`
     }
     
     itemsContent +=
@@ -82,7 +81,7 @@ posts.forEach((elem)=>{
             <div class="post__header">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
-                        <img class="profile-pic" src=${elem.author.image} alt="Phil Mangione">                    
+                        ${immagine}                    
                     </div>
                     <div class="post-meta__data">
                         <div class="post-meta__author">${elem.author.name}</div>
