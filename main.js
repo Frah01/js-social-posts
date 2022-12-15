@@ -59,10 +59,23 @@ const posts = [
 let itemsContent= '';
 
 posts.forEach((elem)=>{
+    
     const date = elem.created;
     const [year, month, day] = date.split('-');
     const result = [month, day, year].join('/');
     
+    
+    if(elem.author.image === null){
+        let text = elem.author.name;
+        const myArray = text.split(" ");
+        console.log(myArray)
+        let nome = myArray[0]
+        let cognome = myArray[1]
+        let primaletteranome = nome.charAt(0)
+        let primaletteracognome = cognome.charAt(0)
+        console.log(primaletteranome)
+        console.log(primaletteracognome)
+    }
     
     itemsContent +=
     `<div class="post">
@@ -72,7 +85,7 @@ posts.forEach((elem)=>{
                         <img class="profile-pic" src=${elem.author.image} alt="Phil Mangione">                    
                     </div>
                     <div class="post-meta__data">
-                        <div class="post-meta__author">Phil Mangione</div>
+                        <div class="post-meta__author">${elem.author.name}</div>
                         <div class="post-meta__time">${result}</div>
                     </div>                    
                 </div>
@@ -98,6 +111,9 @@ posts.forEach((elem)=>{
         let numeroMipiace = elem.likes
         return numeroMipiace
 })
+
+
+
 const itemContainer = document.getElementById('container')
 itemContainer.innerHTML += itemsContent;
 element = document.getElementsByClassName('likes__cta')
