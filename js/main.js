@@ -69,7 +69,7 @@ posts.forEach((elem)=>{
     
     if(elem.author.image === null){
     iniziali = elem.author.name.split(" ").map((e)=>e[0]).join("");
-    immagine = iniziali
+    immagine = `<h1 class="profile-pic text-black">${iniziali}</h1>`
     console.log(iniziali)
     }
     else {
