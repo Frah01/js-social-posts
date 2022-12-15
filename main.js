@@ -68,7 +68,7 @@ posts.forEach((elem)=>{
                     </div>
                     <div class="post-meta__data">
                         <div class="post-meta__author">Phil Mangione</div>
-                        <div class="post-meta__time">4 mesi fa</div>
+                        <div class="post-meta__time">${elem.created}</div>
                     </div>                    
                 </div>
             </div>
@@ -79,22 +79,45 @@ posts.forEach((elem)=>{
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                        <a class="like-button  js-like-button" href="#" data-postid=${elem.id}>
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a ${elem.likes} persone
+                        Piace a <b id="like-counter-${elem.id}" class="js-likes-counter">${elem.likes}</b> persone
                     </div>
                 </div> 
             </div>            
         </div>`
-
+        let numeroMipiace = elem.likes
+        console.log(numeroMipiace)
+        return numeroMipiace
 })
-
-
 const itemContainer = document.getElementById('container')
 itemContainer.innerHTML += itemsContent;
+element = document.getElementsByClassName('likes__cta')
+
+
+const miPiace = document. getElementsByClassName ('js-like-button')
+console.log (miPiace)
+
+for (let i=0 ; i < miPiace.length; i++){
+    miPiace[i].addEventListener ( 'click' , function ( ) {
+    miPiace[i].classList.add('like-button--liked')
+    const postId = this.dataset.postid
+    const likes = document. getElementById(`like-counter-${postId}`)
+    const likesNumber = parseInt(likes.innerText)
+    likes.innerText = likesNumber+1
+    console.log (likesNumber)
+    })
+}
+
+
+
+
+
+
+
 
 
