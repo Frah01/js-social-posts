@@ -79,7 +79,7 @@ posts.forEach((elem)=>{
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid=${elem.id}>
+                        <a class="like-button  js-like-button" data-postid=${elem.id}>
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
@@ -91,26 +91,46 @@ posts.forEach((elem)=>{
             </div>            
         </div>`
         let numeroMipiace = elem.likes
-        console.log(numeroMipiace)
         return numeroMipiace
 })
 const itemContainer = document.getElementById('container')
 itemContainer.innerHTML += itemsContent;
 element = document.getElementsByClassName('likes__cta')
-
+arrayLikes = [];
 
 const miPiace = document. getElementsByClassName ('js-like-button')
 console.log (miPiace)
 
 for (let i=0 ; i < miPiace.length; i++){
+    
     miPiace[i].addEventListener ( 'click' , function ( ) {
-    miPiace[i].classList.add('like-button--liked')
-    const postId = this.dataset.postid
-    const likes = document. getElementById(`like-counter-${postId}`)
-    const likesNumber = parseInt(likes.innerText)
-    likes.innerText = likesNumber+1
-    console.log (likesNumber)
-    })
+        
+        
+        
+        const postId = this.dataset.postid
+        const likes = document. getElementById(`like-counter-${postId}`)
+        const likesNumber = parseInt(likes.innerText)
+        
+    
+        if(arrayLikes.includes(postId)){
+            miPiace[i].classList.remove('like-button--liked')
+            likes.innerText= likesNumber - 1;
+            const index = arrayLikes.indexOf(postId);
+            arrayLikes.splice(index,1)
+            console.log(arrayLikes);
+
+            
+        }
+        else{
+            miPiace[i].classList.add('like-button--liked')
+            likes.innerText = likesNumber +1;
+            arrayLikes.push(postId)
+            console.log(arrayLikes)
+        }
+        
+
+       
+        })
 }
 
 
