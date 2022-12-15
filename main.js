@@ -59,6 +59,11 @@ const posts = [
 let itemsContent= '';
 
 posts.forEach((elem)=>{
+    const date = elem.created;
+    const [year, month, day] = date.split('-');
+    const result = [month, day, year].join('/');
+    
+    
     itemsContent +=
     `<div class="post">
             <div class="post__header">
@@ -68,7 +73,7 @@ posts.forEach((elem)=>{
                     </div>
                     <div class="post-meta__data">
                         <div class="post-meta__author">Phil Mangione</div>
-                        <div class="post-meta__time">${elem.created}</div>
+                        <div class="post-meta__time">${result}</div>
                     </div>                    
                 </div>
             </div>
