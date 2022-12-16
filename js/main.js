@@ -72,7 +72,7 @@ posts.forEach((elem)=>{
     immagine = `<h1 class="profile-pic text-black">${iniziali}</h1>`
     }
     else {
-        immagine = `<img class="profile-pic" src="${elem.author.image}" alt="Phil Mangione"></img>`
+        immagine = `<img class="profile-pic" src="${elem.author.image}" alt=${elem.author.name}></img>`
     }
     
     itemsContent +=
@@ -106,8 +106,6 @@ posts.forEach((elem)=>{
                 </div> 
             </div>            
         </div>`
-        let numeroMipiace = elem.likes
-        return numeroMipiace
 })
 
 
