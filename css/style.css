@@ -128,4 +128,6 @@ h1 {
 
 .text-black{
     color: black;
+    font-size: 25px;
+    text-align: center;
 }

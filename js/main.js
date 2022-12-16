@@ -70,7 +70,6 @@ posts.forEach((elem)=>{
     if(elem.author.image === null){
     iniziali = elem.author.name.split(" ").map((e)=>e[0]).join("");
     immagine = `<h1 class="profile-pic text-black">${iniziali}</h1>`
-    console.log(iniziali)
     }
     else {
         immagine = `<img class="profile-pic" src="${elem.author.image}" alt="Phil Mangione"></img>`
@@ -119,7 +118,6 @@ element = document.getElementsByClassName('likes__cta')
 arrayLikes = [];
 
 const miPiace = document. getElementsByClassName ('js-like-button')
-console.log (miPiace)
 
 for (let i=0 ; i < miPiace.length; i++){
     
@@ -137,7 +135,7 @@ for (let i=0 ; i < miPiace.length; i++){
             likes.innerText= likesNumber - 1;
             const index = arrayLikes.indexOf(postId);
             arrayLikes.splice(index,1)
-            console.log(arrayLikes);
+           
 
             
         }
@@ -145,7 +143,7 @@ for (let i=0 ; i < miPiace.length; i++){
             miPiace[i].classList.add('like-button--liked')
             likes.innerText = likesNumber +1;
             arrayLikes.push(postId)
-            console.log(arrayLikes)
+            
         }
         
 
